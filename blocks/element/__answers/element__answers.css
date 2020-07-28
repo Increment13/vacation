@@ -1,0 +1,4 @@
+.element__answers {
+    display: flex;
+    flex-direction: row;
+}

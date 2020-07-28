@@ -1,0 +1,18 @@
+@import url(./__answers/element__answers.css);
+@import url(./__button/element__button.css);
+@import url(./__options/element__options.css);
+@import url(./__option/element__option.css);
+@import url(./__question/element__question.css);
+@import url(./__title/element__title.css);
+@import url(./__answer/element__answer.css);
+@import url(./__option/_active_right/element__option_active_right.css);
+@import url(./__option/_active_wrong/element__option_active_wrong.css);
+@import url(./__answer/_right/element__answer_right.css);
+@import url(./__answer/_wrong/element__answer_wrong.css);
+.element {
+    width: 800px;
+    height: 600px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 30px;
+}

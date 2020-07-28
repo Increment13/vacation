@@ -1,0 +1,10 @@
+.label__list {
+    width: 400px;
+    font-size: 48px;
+    line-height: 1.4;
+    font-weight: 800;
+    color: gray;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}

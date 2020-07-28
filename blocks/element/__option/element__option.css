@@ -1,0 +1,21 @@
+.element__option {
+    height: 50px;
+    background: gray;
+    border-radius: 5px;
+    margin: 0;
+    padding-left: 10px;
+    color: white;
+    font-size: 18px;
+    line-height: 50px;
+    margin-bottom: 10px;
+    transition: opacity 0.5s ease-in-out;
+    vertical-align: middle;
+}
+
+.element__option:hover,
+.element__option:active,
+.element__option:focus {
+    opacity: 0.8;
+    outline: none;
+    cursor: pointer;
+}
