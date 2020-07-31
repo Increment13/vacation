@@ -20,30 +20,33 @@
                 </ul>
             </div>
             <div class="element">
-                <div class="element__title">Вопрос 4 из 5:</div>
-                <hr>
-                <div class="element__question">Твои действия во время каникул для успешного прохождения курса</div>
-                <ul class="element__options">
-                    <li class="element__option element__option_active_wrong">Лежунькаю на диване</li>
-                    <li class="element__option">Запостил в ФБ какой я "красавчик"</li>
-                    <li class="element__option">Пересмотрел "Друзей"</li>
-                    <li class="element__option">Читаю новости на "Медузе"</li>
-                    <li class="element__option element__option_active_right">Во время каникул собрались небольшой тимой и делаем доп проект</li>
-                </ul>
-                <button class="element__button" type="button">Далее</button>
-                <hr>
-                <div class="element__answers">
-                    <div class="element__answer element__answer_wrong">&#10006</div>
-                    <div class="element__answer element__answer_wrong">&#10006</div>
-                    <div class="element__answer element__answer_right">&#10004</div>
-                    <div class="element__answer element__answer_right">&#10004</div>
-                    <div class="element__answer">&ndash;</div>
-                </div>
             </div>
         </main>
         <footer class="footer"></footer>
     </div>
-    <script src="./pages/index.js"></script>
+
+    <template id="element-template">
+        <article class="elements__element">
+        <div class="element__title">Вопрос 4 из 5:</div>
+        <hr>
+        <div class="element__question">Твои действия во время каникул для успешного прохождения курса</div>
+        <ul class="element__options">
+        </ul>
+        <!-- Добавить инактивный КЛасс-->
+        <button class="element__button" type="button" disabled="disabled">Далее</button>
+        <hr>
+        <div class="element__answers">
+            <div class="element__answer element__answer_wrong">&#10006</div>
+            <div class="element__answer element__answer_wrong">&#10006</div>
+            <div class="element__answer element__answer_right">&#10004</div>
+            <div class="element__answer element__answer_right">&#10004</div>
+            <div class="element__answer">&ndash;</div>
+        </div>
+    </article>
+    </template>
+
+
+    <script type="module" src="./pages/index.js"></script>
 </body>
 
 </html>
