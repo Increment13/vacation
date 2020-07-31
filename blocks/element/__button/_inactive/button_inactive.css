@@ -1,0 +1,13 @@
+.button_inactive {
+    border: 2px solid #000000;
+    border-radius: 2px;
+    color: #C4C4C4;
+    opacity: 0.2;
+}
+
+.element__button:hover,
+.element__button:active,
+.element__button:focus {
+    outline: none;
+    cursor: pointer;
+}

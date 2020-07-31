@@ -10,6 +10,8 @@
     margin-bottom: 10px;
     transition: opacity 0.5s ease-in-out;
     vertical-align: middle;
+    text-align: left;
+    border: 0;
 }
 
 .element__option:hover,

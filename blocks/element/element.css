@@ -9,6 +9,7 @@
 @import url(./__option/_active_wrong/element__option_active_wrong.css);
 @import url(./__answer/_right/element__answer_right.css);
 @import url(./__answer/_wrong/element__answer_wrong.css);
+@import url(./__button/_inactive/button_inactive.css);
 .element {
     width: 800px;
     height: 600px;

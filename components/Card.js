@@ -5,14 +5,12 @@ export default class Card {
         this._cardTemplate = document.getElementById(cardTemplate);
 
         this._hadleAnswerClick = this._hadleAnswerClick.bind(this);
-
     }
 
     _getTemplate() {
         const cardElement = this._cardTemplate.content.querySelector('.elements__element').cloneNode(true);
         return cardElement;
     }
-
 
     generateCard(numberQuestion) {
         this._element = this._getTemplate();
@@ -31,7 +29,7 @@ export default class Card {
         this._element.querySelector('.element__question').textContent = this._questionObj[numberQuestion].question;
 
         answers.forEach((value) => {
-            let liAnswers = document.createElement('li');
+            let liAnswers = document.createElement('button');
             liAnswers.className = 'element__option';
             liAnswers.innerHTML = value;
 
@@ -41,9 +39,7 @@ export default class Card {
             }
             this._element.querySelector('.element__options').append(liAnswers);
             ///клик по ответу
-            liAnswers.addEventListener('click', (evt) => { //стрелочная фигня
-                this._hadleAnswerClick(evt.target);
-            });
+            liAnswers.addEventListener('click', this._hadleAnswerClick);
 
         })
 
@@ -53,7 +49,8 @@ export default class Card {
     }
 
     //клик по ответам
-    _hadleAnswerClick(elemTarget) {
+    _hadleAnswerClick(evt) {
+        const elemTarget = evt.target;
         //проверка что ответ правильный
         if (elemTarget.textContent === this._correctAnswer) {
             elemTarget.classList.add('element__option_active_right');
@@ -63,14 +60,23 @@ export default class Card {
         }
 
         this._element.querySelector('.element__button').removeAttribute('disabled', 'disabled');
-
-        //не работает на стрелочной фигне 
-        document.querySelector('.element__options').removeEventListener('click', this._hadleAnswerClick);
+        this._element.querySelector('.element__button').classList.remove('button_inactive');
+        //блочим кнопки 1 ответ только
+        this._element.querySelectorAll('.element__option').forEach((item) => {
+            item.setAttribute('disabled', 'disabled');
+        })
     }
 
     _handleCardClick() {
         console.log('Нажал на кнопку далее');
         //передать в класс ScoreCalculator
+
+        //считаем кол-во неверных ответов (верный отображается всегда!)
+        console.log(this._element.querySelectorAll('.element__option_active_wrong').length);
+
+
+
+
     }
 
     _setEventListeners() {
