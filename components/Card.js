@@ -1,10 +1,14 @@
 export default class Card {
-    constructor(questionObj, lengthQuestion, cardTemplate) {
+    constructor(questionObj, lengthQuestion, cardTemplate, { sendResult }) {
         this._lengthQuestion = lengthQuestion;
         this._questionObj = questionObj;
         this._cardTemplate = document.getElementById(cardTemplate);
 
+        this._inputSection = document.querySelector('.element');
+        this._sendResult = sendResult;
+
         this._hadleAnswerClick = this._hadleAnswerClick.bind(this);
+        this._handleCardClick = this._handleCardClick.bind(this);
     }
 
     _getTemplate() {
@@ -26,7 +30,7 @@ export default class Card {
 
         //создаем  пул вопросов
         this._element.querySelector('.element__title').textContent = `Вопрос ${numberQuestion + 1} из ${this._lengthQuestion}`;
-        this._element.querySelector('.element__question').textContent = this._questionObj[numberQuestion].question;
+        this._element.querySelector('.element__question').innerHTML = this._questionObj[numberQuestion].question;
 
         answers.forEach((value) => {
             let liAnswers = document.createElement('button');
@@ -40,12 +44,15 @@ export default class Card {
             this._element.querySelector('.element__options').append(liAnswers);
             ///клик по ответу
             liAnswers.addEventListener('click', this._hadleAnswerClick);
-
         })
 
+
+        let timer = document.createElement('div');
+        timer.className = 'element__timer';
+        document.querySelector('.element__add_timer').append(timer);
         this._setEventListeners();
-        //return this._element;
-        document.querySelector('.element').prepend(this._element);
+        //return this._element;//рендер не нужен, рисуем только 1 едемент единловременно
+        this._inputSection.prepend(this._element);
     }
 
     //клик по ответам
@@ -58,7 +65,7 @@ export default class Card {
             elemTarget.classList.add('element__option_active_wrong');
             this._correctElement.classList.add('element__option_active_right');
         }
-
+        document.querySelector('.element__timer').classList.add('element__timer_stop');
         this._element.querySelector('.element__button').removeAttribute('disabled', 'disabled');
         this._element.querySelector('.element__button').classList.remove('button_inactive');
         //блочим кнопки 1 ответ только
@@ -68,22 +75,14 @@ export default class Card {
     }
 
     _handleCardClick() {
-        console.log('Нажал на кнопку далее');
-        //передать в класс ScoreCalculator
-
-        //считаем кол-во неверных ответов (верный отображается всегда!)
-        console.log(this._element.querySelectorAll('.element__option_active_wrong').length);
-
-
-
-
+        this._sendResult(this._element.querySelectorAll('.element__option_active_wrong').length);
+        this._element.querySelector('.element__button').removeEventListener('click', this._handleCardClick);
     }
 
     _setEventListeners() {
         //Клик далее
-        this._element.querySelector('.element__button').addEventListener('click', () => {
-            this._handleCardClick();
-        });
+        this._element.querySelector('.element__button').addEventListener('click', this._handleCardClick);
+
     }
 
 

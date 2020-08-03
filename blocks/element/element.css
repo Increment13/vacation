@@ -10,6 +10,9 @@
 @import url(./__answer/_right/element__answer_right.css);
 @import url(./__answer/_wrong/element__answer_wrong.css);
 @import url(./__button/_inactive/button_inactive.css);
+@import url(./__answers/_hide/element__answers_hide.css);
+@import url(./__timer/element__timer.css);
+@import url(./__timer/_stop/element__timer_stop.css);
 .element {
     width: 800px;
     height: 600px;
